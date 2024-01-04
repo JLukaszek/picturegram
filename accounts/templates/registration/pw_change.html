@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Password Change • {% endblock title %}
+
+{% block content %}
+
+    <div class="position-absolute top-50 start-50 translate-middle">
+        <div class="container p-3 my-3 border text-center" style="width: 25rem;">
+            <h1>Password change</h1>
+            <p>Enter your old and new password.</p>
+            <form method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button class="btn btn-primary btn-sm">Change my password</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock content %}

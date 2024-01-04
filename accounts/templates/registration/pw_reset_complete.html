@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Password Reset • {% endblock title %}
+
+{% block content %}
+
+    <div class="position-absolute top-50 start-50 translate-middle">
+        <div class="container p-3 my-3 border text-center" style="width: 25rem;">
+            <h1>Your password has been changed.</h1>
+            <p>Now you can login with your new password <a href="{% url 'login' %}">here</a></p>
+        </div>
+    </div>
+
+{% endblock content %}

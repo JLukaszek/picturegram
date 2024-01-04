@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Log In • {% endblock title %}
+
+{% block content %}
+
+    <div class="position-absolute top-50 start-50 translate-middle">
+        <div class="container p-3 my-3 border text-center" style="width: 25rem;">
+          <h1>Picturegram</h1>
+          <br>
+          <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-primary btn-sm" type="submit">Login</button>
+          </form>
+          <br>
+          <p><a class="link-primary link-offset-2 link-underline-opacity-0" href="{% url 'password_reset' %}">Don't remember your password?</a></p>
+        </div>
+        <div class="container p-2 my-3 border text-center" style="width: 25rem;">
+            Don't have an account yet? <a class="link-primary link-offset-2 link-underline-opacity-0" href="{% url 'signup' %}">Register Now</a>
+        </div>
+      </div>
+
+{% endblock content %}
