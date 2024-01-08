@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ user }} • {% endblock title %}
+
+{% block content %}
+    <br>
+    <div class="container container-sm text-center border">
+        <div class="row justify-content-md-center mt-3 mb-3">
+            <div class="col-md-auto">
+                <img class="rounded-circle" src="{{ user.profile.profile_pic.url }}" alt="profile_pic" width="150" height=150">
+            </div>
+            <div class="col-3">
+                <div>
+                    <h3>{{ user }}</h3>
+                </div>
+                <div>
+                    <h6>posts: x | followers: x | following: x</h6>
+                </div>
+                <br>
+                <div>
+                    <h6>From: {{ profile.city }} | Age: {{ profile.age }} | Hobbies: {{ profile.hobby }} </h6>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container container-sm text-center border">
+        <h1>All my posts:</h1>
+    </div>
+
+
+{% endblock content %}

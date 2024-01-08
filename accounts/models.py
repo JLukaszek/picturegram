@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-
+from django.urls import reverse
+from PIL import Image
 
 class CustomUser(AbstractUser):
     pass
@@ -17,3 +18,15 @@ class Profile(models.Model):
 
     def __str__(self):
         return f'{self.user.username} Profile'
+
+    def get_absolute_url(self):
+        return reverse('profile_detail', kwargs={'pk': self.pk})
+
+    def save(self):
+        super().save()
+        pic = Image.open(self.profile_pic.path)
+
+        if pic.height > 200 or pic.width > 200:
+            output_size = (200, 200)
+            pic.thumbnail(output_size)
+            pic.save(self.profile_pic.path)

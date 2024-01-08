@@ -1,7 +1,6 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
 
-
 from . import views
 
 
@@ -9,7 +8,10 @@ urlpatterns = [
     path('signup/', views.SignUpView.as_view(), name='signup'),
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-    path('profile/', views.profile, name='profile'),
+    path('profile/', views.CurrentUserDetailView.as_view(), name='current_user_profile'),
+    path('profile/update/', views.profile, name='profile_settings'),
+    path('<int:pk>/', views.AccountDetailView.as_view(),
+         name='profile_detail'),
     path('password_reset/',
          auth_views.PasswordResetView.as_view(template_name='registration/pw_reset_form.html'),
          name='pw_reset'),
